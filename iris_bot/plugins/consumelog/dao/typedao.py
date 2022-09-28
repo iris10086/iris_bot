@@ -78,6 +78,8 @@ class typeDao():
 
         try:
             num = cursor.execute(sql, [id])
+            if num == 0:
+                return None
             return typefactory.gettype(cursor.fetchall())[0]
         except Exception as e:
             print(e.args)

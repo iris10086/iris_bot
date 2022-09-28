@@ -55,6 +55,20 @@ class consumeDao():
             print(e)
             return 0
 
+    def deleteByUid(self, uid: int):
+        cursor = self.connection.cursor()
+
+        sql = '''
+                delete from t_consume
+                where uid = %s
+            '''
+        try:
+            num = cursor.execute(sql, [uid])
+            return num
+        except Exception as e:
+            print(e)
+            return 0
+
     # 修改账单
     def modify(self, consume: consume):
         cursor = self.connection.cursor()
@@ -103,6 +117,20 @@ class consumeDao():
             print(e)
             return None
 
+    def findByUid(self, id: int) -> [consume]:
+        cursor = self.connection.cursor()
+        sql = '''
+                select * from t_consume
+                where uid = %s
+            '''
+        try:
+            num = cursor.execute(sql, [id])
+            if num == 0:
+                return None
+            return consumefactory.getconsume(cursor.fetchall())
+        except Exception as e:
+            print(e)
+            return None
     def commit(self):
         self.connection.commit()
 

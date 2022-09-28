@@ -50,8 +50,26 @@ class userDao():
         try:
             num = cursor.execute(sql, [id])
             fetchall = cursor.fetchall()
-            if not num == 0:
-                return userfactory.getuser(fetchall)[0]
+            if num == 0:
+                return None
+            return userfactory.getuser(fetchall)[0]
+        except Exception as e:
+            print(e.args)
+            return None
+
+    def findByqq(self, qq: int) -> user:
+        cursor = self.connection.cursor()
+
+        sql = '''
+                        select * from t_user
+                        where qq_number = %s
+                        '''
+        try:
+            num = cursor.execute(sql, [qq])
+            fetchall = cursor.fetchall()
+            if num == 0:
+                return None
+            return userfactory.getuser(fetchall)[0]
         except Exception as e:
             print(e.args)
             return None
@@ -86,7 +104,7 @@ class userDao():
                 where uid = %(uid)s
                 '''
         try:
-            num = cursor.execute(sql, userfactory.getusermap(user))
+            num = cursor.execute(sql, userfactory.getmapbyuser(user))
             return num
         except Exception as e:
             print(e)
@@ -102,5 +120,5 @@ class userDao():
 userdao = userDao()
 
 if __name__ == '__main__':
-    user_list = userdao.getuserbyid(1)
+    user_list = userdao.findById(1)
     print("hello")

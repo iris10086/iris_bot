@@ -36,7 +36,37 @@ class typefactory():
 
     # 获取type by map
     def gettypebymap(self, map: {}) -> t_type:
+        '''
+        :param map:{id:v1,name:v2}
+        :return: type(id=v1,name=v2)
+        '''
         return getbean(t_type(), list(map.keys()), list(map.values()))
+
+    def getIdNameMaps(self, types: [t_type]) -> {}:
+        res = {}
+        for type in types:
+            res.update(self.getIdNameMap(type))
+        return res
+
+    def getTypesByMap(self, map: {}) -> [t_type]:
+        '''
+        :param map: {k:v}
+        :return: [type(id=k,name=v)]
+        '''
+        res = []
+        for k, v in map.items():
+            res.append(t_type(id=k, tname=v))
+        return res
+
+    def getTypeByMap(self, map: {}) -> t_type:
+        res = self.getTypesByMap(map)
+        if len(res) == 0:
+            return None
+        return res[0]
+
+    # 获取{id:name} map
+    def getIdNameMap(self, type: t_type) -> {}:
+        return {type.id: type.name}
 
 
 typefactory = typefactory()

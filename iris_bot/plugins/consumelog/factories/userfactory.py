@@ -32,11 +32,11 @@ class userfactory():
         return getbean(user(), self.user_key, list)
 
     # 通过映射关系获取k:v键值对
-    def getusermap(self, user: user):
+    def getmapbyuser(self, user: user):
         return getbeanmap(user, self.user_table_map)
 
     # 通过map获取对象
-    def getuserbymap(self, props:{}) -> user:
+    def getuserbymap(self, props: {}) -> user:
         return getbean(user(), list(props.keys()), list(props.values()))
 
 

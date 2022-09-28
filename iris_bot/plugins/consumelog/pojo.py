@@ -17,6 +17,9 @@ class user():
         self.money = money
         self.qq_number = qq_number
 
+    def subMoney(self, num: int):
+        self.money -= num
+
 
 class consume():
     def __init__(self,
@@ -37,7 +40,7 @@ class consume():
 
 class t_type():
     def __init__(self,
-                 tname: str = "",
-                 id: int = 0):
+                 id: int = 0,
+                 tname: str = ""):
         self.name = tname
         self.id = id
