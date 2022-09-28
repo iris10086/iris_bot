@@ -1,0 +1,235 @@
+# PROJECT: Genshin DailyNote Notice Helper Config File
+# Author: Xm798
+# Github: https://github.com/Xm798/Genshin-Dailynote-Helper
+
+# Caution: 如果字符串中含有特殊字符，请不要忘记使用引号。
+# Caution: Don't forget to use quotes if the string contains special characters.
+
+base:
+  # 语言，支持 zh_CN，zh_TW, en_US 或 ru_RU。
+  # Language, support zh_CN, zh_TW, en_US or ru_RU.
+  LANGUAGE: 'zh_CN'
+  # 账号信息，将下面的 COOKIEx 替换为你的 COOKIE。多账号换行填写，去掉 #，以 - 开头。
+  # Account information, replace COOKIEx below with your COOKIE. Fill in a new line for multiple accounts, remove the #, and start with - .
+  # 国服 COOKIE
+  # Cookie of CN Server
+  COOKIE: 
+    - 'COOKIE1'
+    #- 'COOKIE2'
+  # 国际服 COOKIE
+  # Cookie of HOYOLAB (oversea)
+  COOKIE_HOYOLAB:
+    #- 'COOKIE1'
+    #- 'COOKIE2'
+  # 排除 UID，在该列表中的 UID 不会进行检测
+  # Exclude UIDs, UIDs in this list will not be detected
+  EXCLUDE_UID:
+    #- 100000001
+    #- 500000001
+  # 消息中是否显示隐去中间三位数字的 UID，true or false
+  # Whether to display the UID with the middle three digits hidden in the message, true or false
+  DISPLAY_UID: true
+  # 消息开头的称呼
+  # Nicknme at the beginning of the message
+  NICK_NAME: '亲爱的旅行者'
+
+# 展示信息设置，true or false
+# Display information settings, true or false
+receive_info: 
+  # 原粹树脂
+  # Original Resin
+  RESIN_INFO: true
+  # 委托任务
+  # Commission requests
+  COMMISSION_INFO: true
+  # 探索派遣
+  # Expeditions
+  EXPEDITION_INFO: true
+  # 征讨领域（周本）树脂减半信息
+  # Resin discount of trounce
+  TROUNCE_INFO: true
+  # 洞天宝钱
+  # Home coin
+  HOMECOIN_INFO: true
+  # 参量质变仪
+  # Parametric Transformer
+  TRANSFORMER_INFO: true
+
+# 接收提醒设置
+# Receive reminder settings
+receive_notice:
+  # 原粹树脂提醒阈值，填 0 则关闭提醒
+  # The original resin reminder threshold, fill in 0 to close the reminder
+  RESIN_THRESHOLD: 140
+  # 委托未完成的提醒时间，不填则关闭提醒
+  # Reminder time when the commissions are not completed, if not filled, the reminder will be closed
+  COMMISSION_NOTICE_TIME: '21:00'
+  # 探索派遣完成提醒，true or false
+  # Expeditions completion reminder, true or false
+  EXPEDITION_NOTICE: true
+  # 是否等全部探索派遣都完成后才发送提醒，true or false
+  # Whether to wait until all expeditions are completed before sending reminders，true or false
+  WAIT_ALL_EXPEDITION: false
+  # 洞天宝钱溢出提醒，true or false
+  # Homecoin overflow reminder，true or false
+  HOMECOIN_NOTICE: true
+  # 洞天宝钱提醒的阈值，为最大存储上限×该值，该值为 0 到 1 之间的数字
+  # The threshold of Homecoin, which is the maximum storage upper limit × this value. A number between 0 and 1.
+  HOMECOIN_THRESHOLD: 0.95
+  # 参量质变仪就绪提醒
+  # Parametric Transformer status reminder, true or false
+  TRANSFORMER: true
+
+time:
+  # 检查间隔（分钟），云函数运行时请确保与触发器设置一致，以便执行睡前检查
+    # Check interval (minutes)
+  CHECK_INTERVAL: 30
+  # 免打扰时间
+  # Do Not Disturb Time
+  SLEEP_TIME: '23:00-07:00'
+
+# 推送通道设置
+# Push channel settings
+notifier: # 这里不要填东西 Donot put anything here!
+
+# 企业微信
+  # 企业ID
+  WW_ID: ''
+  # 企业微信应用 ID
+  WW_APP_AGENTID: 
+  # 企业微信应用 SECRET
+  WW_APP_SECRET: ''
+  # 接收推送的用户ID，多个接收者用‘|’分隔，全部用户填写 @all
+  WW_APP_USERID: '@all'
+
+# 企业微信机器人
+  WW_BOT_KEY: ''
+
+# BARK
+  # BARK 完整推送地址，如'https://api.day.app/YourKey'
+  BARK_URL: ''
+  # 自定义 Bark 分组，不填则使用默认分组
+  BARK_GROUP: 
+  # 自定义 Bark 通知图标，不填则不使用自定义图标
+  BARK_ICON: 'https://i2.hdslb.com/bfs/face/d2a95376140fb1e5efbcbed70ef62891a3e5284f.jpg@240w_240h_1c_1s.png'
+  # 自定义 Bark 保存，1 为保存，0 为不保存，不填使用默认规则
+  BARK_ARCHIVE: 
+  # BARK 时效性通知设置，active / timeSensitive / passive，不填使用默认规则
+  BARK_LEVEL: 
+
+# Telegram bot
+  # Telegram API
+  TG_BOT_API: api.telegram.org
+  # Telegram Bot Token
+  TG_BOT_TOKEN: ''
+  # 接收推送的用户 id
+  # User id to receive push
+  TG_USER_ID: 
+
+# Pushdeer
+  PUSHDEER_KEY: 
+
+# CQHTTP
+  # CQHTTP 的 API 地址，格式：协议头://IP 或域名:端口号
+  CQHTTP_URL: 'http://1.2.3.4:5700'
+  # 消息发送方式，private为私聊，group为群聊，guild为频道
+  CQHTTP_MESSAGE_TYPE: private
+  # 接收消息的 QQ 号码/群号码/频道 guild_id
+  CQHTTP_SEND_ID: 
+  # 接收频道消息的子频道 ID，如果不发送到频道不填
+  CQHTTP_SEND_CHANNEL_ID:
+  # CQHTTP 的鉴权 TOKEN，未设置不需要填写
+  CQHTTP_TOKEN: ''
+
+# 钉钉群机器人
+  # 钉钉机器人的 access_token
+  DD_BOT_TOKEN: ''
+  # 钉钉机器人加签密钥，未设置不需要填写
+  DD_BOT_SECRET: ''
+
+# Server chan
+  SCTKEY: 
+
+# Push plus 推送加
+  # PushPlus 推送 token
+  PUSH_PLUS_TOKEN: 
+  # PushPlus 一对多推送群组 id，一对一推送不填
+  PUSH_PLUS_USER: 
+
+# 酷推
+  # 酷推 SKEY
+  COOL_PUSH_SKEY: 
+  # 酷推推送模式，send / psend / group / pgroup
+  COOL_PUSH_MODE: psend
+  # 酷推指定接收方 QQ 号/群号
+  COOL_PUSH_SENDID: 
+
+# QMSG 酱
+  QMSG_KEY: 
+
+# Discord Webhook
+  # Discord Webhook 地址
+  # Discord Webhook url
+  DISCORD_WEBHOOK: ''
+  # 机器人名字，不填使用默认
+  # Robot name, leave it blank and use the default
+  DISCORD_USERNAME: 
+  # 机器人头像，须为 web 图片，不填使用默认
+  # The avatar of the robot, which must be a web image, the default is used if not filled
+  DISCORD_AVATAR: ''
+  # 将颜色16进制转为十进制
+  # Convert hex color to decimal
+  DISCORD_COLOR: 15553898
+
+# IGOT
+  IGOT_KEY: 
+
+# MAIL
+  # 邮件 smtp 服务器
+  # mail smtp server
+  MAIL_HOST: ''
+  # smtp 端口
+  # smtp port
+  MAIL_PORT: 465
+  # 是否开启 STARTTLS，true or false
+  # Whether to enable STARTTLS，true or false
+  MAIL_STARTTLS: false
+  # 发件人邮箱账号
+  # Sender's email account
+  MAIL_USERNAME: ''
+  # 发件人邮箱密码（或授权码）
+  # Sender's email password (or authorization code)
+  MAIL_PASSWORD: ''
+  # 收件人邮箱地址
+  # recipient email address
+  MAIL_TO: ''
+
+# Chanify
+  # Chanify 服务器地址
+  # Node address of Chanify
+  CHANIFY_URL: https://api.chanify.net/
+  # Token of Chanify
+  CHANIFY_TOKEN:
+  # 声音提示，1 启用声音提示, 其他情况静音推送
+  # Sound of Chanify, 1 enable sound, otherwise disable sound.
+  CHAINFY_SOUND: 1
+  # 优先级，10 正常优先级, 5 较低优先级
+  # Priority of Chanify, 10 normal, 5 lower level.
+  CHAINFY_PRIORITY: 10
+  # 通知时间的中断级别
+  # Interruption level for timing of a notification.
+  CHAINFY_INTERRUPTION_LEVEL: 'active'
+
+# 自定义推送
+# Custom notifier
+  CUSTOM_NOTIFIER:
+    method: POST
+    url: ''
+    data_type: data
+    headers: {}
+    data: {}
+    title_key:
+    desp_key:
+    markdown: false
+    retcode_key:
+    retcode_value:
